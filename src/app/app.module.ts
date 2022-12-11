@@ -31,6 +31,7 @@ import { VideoListComponent } from './video-list/video-list.component';
 import { SingleVideoComponent } from './single-video/single-video.component';
 import { SubtitleComponent } from './subtitle/subtitle.component';
 import { DeleteComponent } from './delete/delete.component';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -66,7 +67,7 @@ import { DeleteComponent } from './delete/delete.component';
     ReactiveFormsModule,
     
   ],
-  providers: [WebService],
+  providers: [WebService,{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
