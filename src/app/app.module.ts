@@ -67,7 +67,7 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
     ReactiveFormsModule,
     
   ],
-  providers: [WebService,{ provide: LocationStrategy, useClass: HashLocationStrategy }],
+  providers: [WebService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
