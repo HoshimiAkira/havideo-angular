@@ -3,7 +3,7 @@
       <div class="video" *ngFor ="let data of video | async">
           <h1>{{data.title}}</h1>
           <div class="play">
-            <video height="720" controls autoplay>
+            <video height="720" controls autoplay crossorigin="anonymous">
                 <source [src]="data.video" type="video/mp4">
                 <track [src]="data.vtt" srclang="en" kind="subtitles" label="English" default>
             </video>
