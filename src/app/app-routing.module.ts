@@ -11,6 +11,7 @@ import { SearchComponent } from './search/search.component';
 import { SingleVideoComponent } from './single-video/single-video.component';
 import { SubtitleComponent } from './subtitle/subtitle.component';
 import { UploadComponent } from './upload/upload.component';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 const routes: Routes = [
   {
@@ -63,7 +64,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{useHash: true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
