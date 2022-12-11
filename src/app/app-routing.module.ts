@@ -12,6 +12,7 @@ import { SingleVideoComponent } from './single-video/single-video.component';
 import { SubtitleComponent } from './subtitle/subtitle.component';
 import { UploadComponent } from './upload/upload.component';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { CollectionComponent } from './collection/collection.component';
 
 const routes: Routes = [
   {
@@ -23,7 +24,7 @@ const routes: Routes = [
     component:LoginComponent
   },
   {
-    path:"register",
+    path:"register/:confirm",
     component:RegisterComponent
   },
   {
@@ -55,6 +56,11 @@ const routes: Routes = [
     path:"delete",
     component:DeleteComponent,
     canActivate:[AuthGuard,AdminGuard]
+  },
+  {
+    path:"collection",
+    component:CollectionComponent,
+    canActivate:[AuthGuard]
   },
   {
     path:"**",

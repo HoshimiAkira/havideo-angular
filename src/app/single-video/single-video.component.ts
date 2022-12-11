@@ -40,6 +40,16 @@ export class SingleVideoComponent {
     this.webService.addComment(this.commentList,this.route.snapshot.params['id'])
     this.video=this.webService.getVideo(this.route.snapshot.params['id'])
   }
-  
-  
+  collection(){
+    var id=localStorage.getItem("id")
+    var vid=this.route.snapshot.params['id']
+    this.webService.addCollection(id,vid)
+    this.video=this.webService.getVideo(this.route.snapshot.params['id'])
+  }
+  cancel(){
+    var id=localStorage.getItem("id")
+    var vid=this.route.snapshot.params['id']
+    this.webService.cancelCollection(id,vid)
+    this.video=this.webService.getVideo(this.route.snapshot.params['id'])
+  }
 }

@@ -11,16 +11,30 @@ export class DeleteComponent {
   constructor(public webService: WebService,private router:Router) {}
   errmessage:any
   uploadmessage:any
-  list={
-    vid:"",
-    cid:""
-  }
-  vid:any
-  cid:any
+  vid=""
+  cid=""
   deletevideo(){
-
+    if(this.vid==""){
+      this.errmessage="Please input video id."
+      return
+    }else{
+      this.errmessage=null
+    }
+    this.webService.deleteVideo(this.vid)
   }
   deletecomment(){
-
+    if(this.vid==""){
+      this.errmessage="Please input video id."
+      return
+    }else{
+      this.errmessage=null
+    }
+    if(this.cid==""){
+      this.errmessage="Please input comment id."
+      return
+    }else{
+      this.errmessage=null
+    }
+    this.webService.deleteComment(this.vid,this.cid)
   }
 }

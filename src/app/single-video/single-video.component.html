@@ -13,6 +13,8 @@
             <h4>View counts:&nbsp;{{data.views}}&nbsp;&nbsp;&nbsp;&nbsp;Collect:&nbsp;{{data.collect}}&nbsp;&nbsp;&nbsp;&nbsp;Date:&nbsp;{{data.date}}</h4>
             <h4>Introduction:</h4>
             <p>{{data.intro}}</p>
+            <button mat-raised-button *ngIf="data.check!=true" color="primary" (click)="collection()">Collect the video</button>
+            <button mat-raised-button *ngIf="data.check==true" color="primary" (click)="cancel()">Cancel collect</button>
           </div>
           <div class="comment">
             <h3>Comments:</h3>

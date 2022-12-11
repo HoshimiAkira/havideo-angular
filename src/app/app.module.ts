@@ -34,6 +34,8 @@ import { DeleteComponent } from './delete/delete.component';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { JwtModule } from '@auth0/angular-jwt';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
+import { CollectionComponent } from './collection/collection.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +49,9 @@ import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
     VideoListComponent,
     SingleVideoComponent,
     SubtitleComponent,
-    DeleteComponent
+    DeleteComponent,
+    CollectionComponent,
+
   ],
   imports: [
     BrowserModule,

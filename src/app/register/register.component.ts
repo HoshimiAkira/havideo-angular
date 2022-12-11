@@ -4,6 +4,7 @@ import { Router, NavigationExtras } from '@angular/router';
 import { ErrorStateMatcher } from '@angular/material/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import { registerCheck } from './register-check';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -11,11 +12,12 @@ import { registerCheck } from './register-check';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-  constructor(public webService: WebService,private router:Router) {}
+  constructor(public webService: WebService,private router:Router,private route: ActivatedRoute) {}
   list={
     email:"",
     password:"",
-    username:""
+    username:"",
+    confirm:""
   }
   
   registerControl = new FormGroup({
@@ -38,6 +40,9 @@ export class RegisterComponent {
     }
     if(this.registerControl.value["password1"]!=null){
       this.list["password"]=this.registerControl.value["password1"]
+    }
+    if(this.route.snapshot.params['confirm']=="admin"){
+      this.list["confirm"]="up"
     }
     this.webService.register(this.list)
   }

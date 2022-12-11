@@ -15,6 +15,6 @@ export class AdminComponent {
     this.router.navigate(["subtitle"])
   }
   del(){
-    
+    this.router.navigate(["delete"])
   }
 }

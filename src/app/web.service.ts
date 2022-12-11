@@ -31,6 +31,7 @@ export class WebService {
         postData.append("email",list["email"]);
         postData.append("password",list["password"]);
         postData.append("username",list["username"]);
+        postData.append("confirm",list["confirm"]);
         console.log("register")
         return this.http.post('https://havideoapi.azurewebsites.net/api/v1.0/register',postData)
         .subscribe((response: any) => {
@@ -82,13 +83,17 @@ export class WebService {
             })
     }
     getVideo(id:any) {
+        var uid:any=""
+        if(localStorage.getItem("id")!=null){
+            uid=localStorage.getItem("id")
+        }
         var token:any="";
         if(localStorage.getItem("token")!=null){
             token=localStorage.getItem("token")
         }
         return this.http.get(
             'https://havideoapi.azurewebsites.net/api/v1.0/video/'+id,{
-                params:{"token":token}
+                params:{"token":token,"uid":uid}
             })
     }
     addComment(list:any,id:any){
@@ -137,5 +142,97 @@ export class WebService {
             this.message=(error["error"]["message"])
             console.log(error)
          })
+    }
+    deleteVideo(id:any){
+        var token:any="";
+        if(localStorage.getItem("token")!=null){
+            token=localStorage.getItem("token")
+        }
+        return this.http.delete('https://havideoapi.azurewebsites.net/api/v1.0/video/'+id+'?token='+token,{
+        }).subscribe({
+            next: data => {
+                alert("delete success.")
+                this.router.navigate(["admin"])
+            },
+            error: error => {
+                this.message=(error["error"]["message"])
+                console.log(error)
+            }
+        });
+    }
+    deleteComment(bid:any,cid:any){
+        var token:any="";
+        if(localStorage.getItem("token")!=null){
+            token=localStorage.getItem("token")
+        }
+        let postData=new FormData();
+        return this.http.delete('https://havideoapi.azurewebsites.net/api/v1.0/video/'+bid+'/comment/'+cid+'?token='+token,{
+        })
+        .subscribe({
+            next: data => {
+                alert("delete success.")
+                this.router.navigate(["admin"])
+            },
+            error: error => {
+                this.message=(error["error"]["message"])
+                console.log(error)
+            }
+        });
+    }
+    addCollection(id:any,vid:any){
+        this.message=null;
+        var token:any="";
+        if(localStorage.getItem("token")!=null){
+            token=localStorage.getItem("token")
+        }
+        let postData=new FormData();
+        postData.append("id",id)
+        postData.append("vid",vid);
+        return this.http.post('https://havideoapi.azurewebsites.net/api/v1.0/video/'+vid,postData,{
+            params:{"token":token}
+        })
+        .subscribe((response: any) => {
+            alert(response["success"])
+        },(error: HttpErrorResponse) => {
+            this.message=(error["error"]["message"])
+            console.log(error)
+         })
+    }
+    cancelCollection(id:any,vid:any){
+        this.message=null;
+        var token:any="";
+        if(localStorage.getItem("token")!=null){
+            token=localStorage.getItem("token")
+        }
+        let postData=new FormData();
+        postData.append("id",id)
+        return this.http.post('https://havideoapi.azurewebsites.net/api/v1.0/video/'+vid+'/cancel',postData,{
+            params:{"token":token}
+        })
+        .subscribe((response: any) => {
+            alert(response["success"])
+        },(error: HttpErrorResponse) => {
+            this.message=(error["error"]["message"])
+            console.log(error)
+         })
+    }
+    getCollectionList(list:any){
+        var token:any="";
+        if(localStorage.getItem("token")!=null){
+            token=localStorage.getItem("token")
+        }
+        var id:any=""
+        if(localStorage.getItem("id")!=null){
+            id=localStorage.getItem("id")
+        }
+        console.log(token)
+        return this.http.get(
+            'https://havideoapi.azurewebsites.net/api/v1.0/collection',{
+                params:
+                {
+                    "title":list["title"],"publisher":list["publisher"],"producer":list["producer"],"genre":list["genre"],"token":token,
+                    "id":id
+                },
+            })
     }
 }
