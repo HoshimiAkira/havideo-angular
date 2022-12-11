@@ -1,0 +1,5 @@
+<div class="video_list" *ngFor = "let video of video_list | async">
+    <img src="{{video.picSrc}}" [routerLink]="['/single',video.id]">
+    <p>{{video.title}}</p>
+    <p>{{video.date}}&nbsp;&nbsp;{{video.views}} views&nbsp;&nbsp;|&nbsp;&nbsp;{{video.collect}} collect</p>
+</div>

@@ -1,0 +1,25 @@
+.context{
+    margin-left: 20px;
+    margin-top: 20px;
+}
+.play{
+    text-align:center;
+    border-bottom: 1px solid gray;
+    padding:20px
+}
+.text{
+    border-bottom: 1px solid gray;
+}
+.example-full-width{
+    width:1000px;
+    height: 200px;
+}
+p.error{
+    color:red;
+    margin-left:20px;
+}
+.list{
+    padding-top: 5px;
+    border-bottom: 1px solid gray;
+    margin-left: 20px;
+}

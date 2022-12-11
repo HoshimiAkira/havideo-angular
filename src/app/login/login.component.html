@@ -1,0 +1,20 @@
+<div class="login">
+    <h2>Welcome to HAvideo! Please login.</h2>
+    <form class="login-input">
+        <mat-form-field appearance="fill" class="input">
+            <mat-label>Unique User Name(Email)</mat-label>
+            <input matInput placeholder="User Name" type="text" [formControl]="loginControl" appearance="fill" [(ngModel)]="email" name="email">
+        </mat-form-field>
+        <p></p>
+        <mat-form-field appearance="fill" class="input">
+            <mat-label>Password</mat-label>
+            <input matInput placeholder="Password" type="password" [formControl]="loginControl" appearance="fill" [(ngModel)]="password" name="password">
+            <mat-error *ngIf="webService.message != null">
+                {{webService.message}}
+            </mat-error>
+        </mat-form-field>
+        <p></p>
+        <button mat-raised-button color="primary" (click)="login()">Login</button>&nbsp;&nbsp;
+        <a href="register">Sign up</a>
+    </form>
+</div>

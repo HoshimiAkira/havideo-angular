@@ -1,0 +1,33 @@
+<div class="register">
+    <h2>Welcome to HAvideo! Please register.</h2>
+    <form class="register-input" [formGroup]="registerControl">
+        <mat-form-field appearance="fill" class="input">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Email" type="text" formControlName="email" appearance="fill"  name="email">
+            <mat-error>Need right email</mat-error>
+        </mat-form-field>
+        <p></p>
+        <mat-form-field appearance="fill" class="input">
+            <mat-label>Username</mat-label>
+            <input matInput placeholder="User Name" type="text" formControlName="username" appearance="fill"  name="username">
+            <mat-error>User name cannot be less than five characters</mat-error>
+        </mat-form-field>
+        <p></p>
+        <mat-form-field appearance="fill" class="input">
+            <mat-label>Password</mat-label>
+            <input matInput placeholder="Password" type="password" formControlName="password1"  appearance="fill"  name="password">
+            <mat-hint>The password should be greater than six characters and should contain numbers</mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="input">
+            <mat-label>Input Password Again</mat-label>
+            <input matInput placeholder="Password" type="password" formControlName="password2" appearance="fill"  name="password">
+            <mat-hint>The passwords entered twice should be the same</mat-hint>
+        </mat-form-field>
+        <p></p>
+        <p class="error" *ngIf="webService.message != null">
+            {{webService.message}}
+        </p>
+        <button mat-raised-button color="primary" [disabled]="!registerControl.valid" (click)="register()">Sign up</button>&nbsp;&nbsp;
+        <button mat-raised-button color="primary" (click)="login()">Login</button>   
+    </form>
+</div>

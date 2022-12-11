@@ -1,0 +1,50 @@
+<app-list>
+    <div class="context">
+      <div class="video" *ngFor ="let data of video | async">
+          <h1>{{data.title}}</h1>
+          <div class="play">
+            <video height="720" controls autoplay>
+                <source [src]="data.video" type="video/mp4">
+                <track [src]="data.vtt" srclang="en" kind="subtitles" label="English" default>
+            </video>
+          </div>
+          <div class="text">
+            <h4>Publisher:&nbsp;{{data.publisher}}&nbsp;&nbsp;&nbsp;&nbsp;Producer:&nbsp;{{data.producer}}&nbsp;&nbsp;&nbsp;&nbsp;Genre:&nbsp;{{data.genre}}</h4>
+            <h4>View counts:&nbsp;{{data.views}}&nbsp;&nbsp;&nbsp;&nbsp;Collect:&nbsp;{{data.collect}}&nbsp;&nbsp;&nbsp;&nbsp;Date:&nbsp;{{data.date}}</h4>
+            <h4>Introduction:</h4>
+            <p>{{data.intro}}</p>
+          </div>
+          <div class="comment">
+            <h3>Comments:</h3>
+                <div *ngFor="let com of data.comment" class="list">
+                    <h4 *ngIf="!identityCheck">id:{{com._id}}</h4>
+                    <h4>Username:{{com.username}}</h4>
+                    <h4>Mark:{{com.mark}}</h4>
+                    <p>Comment:{{com.comment}}</p>
+                </div>
+            <h4>Add your comment:</h4>
+            <form class="incomment">
+                <mat-form-field appearance="fill">
+                    <mat-label>Mark:</mat-label>
+                    <mat-select [(ngModel)]="mark" name="mark">
+                    <mat-option *ngFor="let item of marks" [value]="item">
+                        {{item}}
+                    </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <br/>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Comment:</mat-label>
+                    <textarea matInput placeholder="Introduction" [(ngModel)]="comment" name="comment"></textarea>
+                </mat-form-field>
+                <br/>
+                <button mat-raised-button color="primary" (click)="upcomment()">Comment</button>
+                <br/>
+                <p class="error" *ngIf="message != null">
+                    {{message}}
+                </p>
+            </form>
+          </div>
+      </div>
+    </div>
+</app-list>

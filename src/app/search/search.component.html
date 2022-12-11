@@ -1,0 +1,35 @@
+<app-list>
+    <div class="context">
+      <h2>Video Filter</h2>
+      <form class="video_filter">
+        <mat-form-field appearance="fill">
+            <mat-label>Title</mat-label>
+            <input matInput placeholder="Title" appearance="fill" [(ngModel)]="title" name="title">
+        </mat-form-field>
+        &nbsp;&nbsp;
+        <mat-form-field appearance="fill">
+            <mat-label>Publisher</mat-label>
+            <input matInput placeholder="Title" appearance="fill" [(ngModel)]="publisher" name="publisher">
+        </mat-form-field>
+        &nbsp;&nbsp;
+        <mat-form-field appearance="fill">
+            <mat-label>Producer</mat-label>
+            <input matInput placeholder="Title" appearance="fill" [(ngModel)]="producer" name="producer">
+        </mat-form-field>
+        &nbsp;&nbsp;
+        <mat-form-field appearance="fill">
+            <mat-label>Genre</mat-label>
+            <mat-select [(ngModel)]="genre" name="genre">
+              <mat-option *ngFor="let item of genres" [value]="item">
+                {{item}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+      </form>
+      <button mat-raised-button color="primary" (click)="search()">Search</button>
+      <h3>Result</h3>
+      <div class="result"> 
+        <app-video-list [video_list]="video_list"></app-video-list>
+      </div>
+    </div>
+  </app-list>

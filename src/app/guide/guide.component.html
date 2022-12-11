@@ -1,0 +1,10 @@
+<app-list>
+  <div class="context">
+    <h3>Welcome to HAVideo!</h3>
+    <h4>High quality, various types of videos are provided here. All videos on the website have automatically generated subtitles, providing you with a better viewing experience.</h4>  
+    <button *ngIf="token!=null" mat-raised-button color="primary" (click)="logout()">Logout</button>
+    <button *ngIf="token==null" mat-raised-button color="primary" (click)="login()">Login</button>
+    <h3>Attention</h3>
+    <h4>The video upload page is not open to all users. If you are interested in cooperation, please contact the website administrator:</h4>
+  </div>
+</app-list>

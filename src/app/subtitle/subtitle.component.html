@@ -1,0 +1,22 @@
+<app-list>
+    <div class="context">
+        <h2>Upload subtitle:</h2>
+        <form class="uplpad">
+            <mat-form-field appearance="fill" class="input">
+                <mat-label>Video id:</mat-label>
+                <input matInput placeholder="Video Title" type="text" appearance="fill" [(ngModel)]="id" name="id">
+            </mat-form-field>
+            <br/>
+            <label>Subtitle:</label>
+            <input placeholder="Subtitle file(.vtt)" type="file" appearance="fill"  name="video" (change)="onChange($event)">
+            <br/>
+            <p class="error" *ngIf="errmessage!=null">{{errmessage}}</p>
+            <br/>
+            <button mat-raised-button color="primary" (click)="submit()">Submit</button>
+            <p class="error" *ngIf="uploadmessage!=null">{{uploadmessage}}</p>  
+            <p class="error" *ngIf="webService.message != null">
+                {{webService.message}}
+            </p> 
+        </form>
+    </div>
+</app-list>

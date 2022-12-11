@@ -1,0 +1,54 @@
+<app-list>
+    <div class="context">
+        <h2>Video Info</h2>
+        <form class="uplpad">
+            <mat-form-field appearance="fill" class="input">
+                <mat-label>Video Title:</mat-label>
+                <input matInput placeholder="Video Title" type="text" appearance="fill" [(ngModel)]="title" name="title">
+            </mat-form-field>&nbsp;&nbsp;
+            <mat-form-field appearance="fill">
+                <mat-label>Level</mat-label>
+                <mat-select [(ngModel)]="level" name="level">
+                  <mat-option *ngFor="let item of levels" [value]="item">
+                    {{item}}
+                  </mat-option>
+                </mat-select>
+            </mat-form-field>&nbsp;&nbsp;
+            <mat-form-field appearance="fill" class="input">
+                <mat-label>Video Producer:</mat-label>
+                <input matInput placeholder="Video Producer" type="text" appearance="fill" [(ngModel)]="producer" name="producer" >
+            </mat-form-field>
+            <br/>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Video introduction</mat-label>
+                <textarea matInput placeholder="Introduction" [(ngModel)]="introduction" name="introduction"></textarea>
+            </mat-form-field>
+            <br/>
+            <section class="genre">
+                <h3>Genre</h3>
+                <span *ngFor="let item of genres">
+                  <mat-checkbox class="genre" [(ngModel)]=item.checked [ngModelOptions]="{standalone: true}" ngDefaultControl color="primary">
+                  {{item.title}}</mat-checkbox>&nbsp;&nbsp;
+                </span>
+            </section>
+            <br/>
+            <label>Video:</label>
+            <input placeholder="Video" type="file" appearance="fill"  name="video" (change)="onvChange($event)">
+            <p>The recommended video ratio is 16:9, and the resolution is 1920x1080</p>
+            <video [src]="videourl" *ngIf="format1=='video' && videourl" height="360" controls></video>
+            <p class="error" *ngIf="errmessage1!=null">{{errmessage1}}</p>
+            <br/>
+            <label>Cover:</label>
+            <input placeholder="Cover picture" type="file" appearance="fill"  name="img" (change)="oniChange($event)">
+            <p>The recommended cover ratio is 16:9, and the size is not less than 1080x720</p>
+            <img [src]="imgurl" *ngIf="format2=='image' && imgurl" height="360" controls>
+            <p class="error" *ngIf="errmessage2!=null">{{errmessage2}}</p>
+            <br/>
+            <p class="error" *ngIf="webService.message != null">
+                {{webService.message}}
+            </p>
+            <button mat-raised-button color="primary" (click)="submit()">Submit</button>
+            <p class="error" *ngIf="uploadmessage!=null">{{uploadmessage}}</p>   
+        </form>
+    </div>
+</app-list>
