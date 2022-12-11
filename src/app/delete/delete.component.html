@@ -1,1 +1,26 @@
-<p>delete works!</p>
+<app-list>
+    <div class="context">
+        <h2>Delete Video or Comment:</h2>
+        <form class="delete">
+            <mat-form-field appearance="fill" class="input">
+                <mat-label>Video id:</mat-label>
+                <input matInput placeholder="Video ID" type="text" appearance="fill" [(ngModel)]="vid" name="vid">
+            </mat-form-field>
+            <br/>
+            <button mat-raised-button color="primary" (click)="deletevideo()">Delete Video</button>
+            <br/>
+            <mat-form-field appearance="fill" class="input">
+                <mat-label>Comment id:</mat-label>
+                <input matInput placeholder="Comment ID" type="text" appearance="fill" [(ngModel)]="cid" name="cid">
+            </mat-form-field>
+            <br/>
+            <p class="error" *ngIf="errmessage!=null">{{errmessage}}</p>
+            <br/>
+            <button mat-raised-button color="primary" (click)="deletecomment()">Delete Comment</button>
+            <p class="error" *ngIf="uploadmessage!=null">{{uploadmessage}}</p>  
+            <p class="error" *ngIf="webService.message != null">
+                {{webService.message}}
+            </p> 
+        </form>
+    </div>
+</app-list>

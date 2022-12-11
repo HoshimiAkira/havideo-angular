@@ -21,7 +21,7 @@ export class SingleVideoComponent {
   constructor(private router:Router,public webService: WebService,private route: ActivatedRoute) {}
   ngOnInit(){
     this.video=this.webService.getVideo(this.route.snapshot.params['id'])
-    if(sessionStorage.getItem("identity")=="up"||sessionStorage.getItem("identity")=="admin"){
+    if(localStorage.getItem("identity")=="up"||localStorage.getItem("identity")=="admin"){
       this.identityCheck=false
     }
   }

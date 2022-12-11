@@ -11,9 +11,9 @@ import { Router } from '@angular/router';
 })
 export class GuideComponent {
   constructor(private breakpointObserver: BreakpointObserver,private router:Router) {}
-  token=sessionStorage.getItem("token")
+  token=localStorage.getItem("token")
   logout(){
-    sessionStorage.clear()
+    localStorage.clear()
     this.router.navigate(["login"])
   }
   login(){

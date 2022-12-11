@@ -18,8 +18,8 @@ export class ListComponent {
     );
   identityCheck=true
   ngOnInit(){
-    console.log(sessionStorage.getItem("identity"))
-    if(sessionStorage.getItem("identity")=="up"||sessionStorage.getItem("identity")=="admin"){
+    console.log(localStorage.getItem("identity"))
+    if(localStorage.getItem("identity")=="up"||localStorage.getItem("identity")=="admin"){
       this.identityCheck=false
     }
   }

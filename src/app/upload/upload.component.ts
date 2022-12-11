@@ -157,7 +157,7 @@ export class UploadComponent {
     this.list["title"]=this.title
     this.list["intro"]=this.introduction
     this.list["producer"]=this.producer
-    this.publisher=sessionStorage.getItem("username")
+    this.publisher=localStorage.getItem("username")
     this.list["publisher"]=this.publisher
     this.webService.upload(this.list)
   }

@@ -32,6 +32,8 @@ import { SingleVideoComponent } from './single-video/single-video.component';
 import { SubtitleComponent } from './subtitle/subtitle.component';
 import { DeleteComponent } from './delete/delete.component';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { JwtModule } from '@auth0/angular-jwt';
+import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,9 +67,10 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
     MatGridListModule,
     HttpClientModule,
     ReactiveFormsModule,
-    
+    JwtModule,
   ],
-  providers: [WebService],
+  providers: [WebService,{ provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+    JwtHelperService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
