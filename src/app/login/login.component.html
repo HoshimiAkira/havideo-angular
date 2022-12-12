@@ -9,10 +9,11 @@
         <mat-form-field appearance="fill" class="input">
             <mat-label>Password</mat-label>
             <input matInput placeholder="Password" type="password" [formControl]="loginControl" appearance="fill" [(ngModel)]="password" name="password">
-            <mat-error *ngIf="webService.message != null">
-                {{webService.message}}
-            </mat-error>
+            
         </mat-form-field>
+        <p class="error" *ngIf="webService.message != null">
+            {{webService.message}}
+        </p>
         <p></p>
         <button mat-raised-button color="primary" (click)="login()">Login</button>&nbsp;&nbsp;
         <a [routerLink]="['/register','?']">Sign up</a>
